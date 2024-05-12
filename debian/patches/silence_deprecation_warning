@@ -1,0 +1,14 @@
+Description: silence deprecation warning
+Author: Josh Goodall <joshua@roughtrade.net>
+
+--- apt-transport-s3-2.1.0.orig/s3
++++ apt-transport-s3-2.1.0/s3
+@@ -313,7 +313,7 @@ class AWSCredentials(object):
+         request.add_header('x-amz-content-sha256', self._payload_hash(request))
+
+         # Create a date for headers and the credential string
+-        amzdate = datetime.datetime.utcnow().strftime('%Y%m%dT%H%M%SZ')
++        amzdate = datetime.datetime.now(datetime.UTC).strftime('%Y%m%dT%H%M%SZ')
+
+         request.add_header('x-amz-date', amzdate)
+
